@@ -38,6 +38,7 @@
     configuration.duration = duration;
     configuration.targetView = targetView;
     configuration.restartType = type;
+    configuration.numberOfTrack = (CGRectGetHeight(configuration.targetView.frame) - configuration.topMargin - configuration.bottomMargin)/configuration.eachBulletViewHeight;
     return configuration;
 }
 

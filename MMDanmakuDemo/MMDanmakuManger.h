@@ -14,9 +14,11 @@
 @interface MMDanmakuManger : NSObject
 @property (nonatomic, strong) MMConfiguration *configuration;
 @property (nonatomic, weak) id<MMDanmakuMangerDataSource> dataSource;
-
+@property (nonatomic, assign) BOOL isStarted;
+@property (nonatomic, assign) BOOL isFinished;
+@property (nonatomic, assign) BOOL isPaused;
 - (void)packageData;
-- (void)srart;
+- (void)start;
 - (void)stop;
 - (void)pause;
 - (instancetype)initWithConfiguration:(MMConfiguration *)configuration;

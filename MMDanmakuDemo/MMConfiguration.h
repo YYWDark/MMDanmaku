@@ -16,18 +16,20 @@ typedef NS_ENUM(NSUInteger, MMDanMakuRestartType) {
 
 @interface MMConfiguration : NSObject
 @property (nonatomic, assign) MMDanMakuRestartType restartType;
-@property (nonatomic, copy) NSString *memberColorHex;
-@property (nonatomic, copy) NSString *normalColorHex;
-@property (nonatomic, assign) NSTimeInterval duration;
-@property (nonatomic, assign) CGFloat topMargin;
+@property (nonatomic, assign) NSTimeInterval duration;            //时间
+@property (nonatomic, assign) CGFloat topMargin;                  //跑道上的边距
 @property (nonatomic, assign) CGFloat bottomMargin;
 @property (nonatomic, assign) CGFloat leftMargin;
 @property (nonatomic, assign) CGFloat rightMargin;
-@property (nonatomic, assign) CGFloat eachBulletViewHeight;
+@property (nonatomic, assign) CGFloat eachBulletViewHeight;       //每个视图的高度
 @property (nonatomic, assign) CGFloat titleSize;
 @property (nonatomic, assign) CGFloat horizontalMargin;           //left medium right
-@property (nonatomic, assign) CGFloat imageSide;
+@property (nonatomic, assign) CGFloat imageSide;                  //图片的边长
+@property (nonatomic, assign) NSUInteger numberOfTrack;           //弹道数
 @property (nonatomic, strong) UIView *targetView;
+
+@property (nonatomic, copy) NSString *memberColorHex;  //会员字体颜色
+@property (nonatomic, copy) NSString *normalColorHex;  //正常的颜色
 
 + (instancetype)configurationAimationDuration:(NSTimeInterval)duration
                                    targetView:(UIView *)targetView
