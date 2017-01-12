@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "MMDanMakuModel.h"
 #import "MMConfiguration.h"
-
+typedef void(^TapLocationPointBlock)(CGPoint point);
 @protocol MMDanmakuMangerDataSource;
 @interface MMDanmakuManger : NSObject
 @property (nonatomic, strong) MMConfiguration *configuration;
 @property (nonatomic, weak) id<MMDanmakuMangerDataSource> dataSource;
+@property (nonatomic, copy) TapLocationPointBlock tapBlock;
 @property (nonatomic, assign) BOOL isStarted;
 @property (nonatomic, assign) BOOL isFinished;
 @property (nonatomic, assign) BOOL isPaused;

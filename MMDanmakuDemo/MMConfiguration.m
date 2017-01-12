@@ -27,6 +27,8 @@
         self.titleSize = 14.0f;
         self.horizontalMargin = 10.0f;
         self.imageSide = self.eachBulletViewHeight;
+        self.isNeedReuse = YES;
+        self.durationOfProduction = .3f;
     }
     return self;
 }

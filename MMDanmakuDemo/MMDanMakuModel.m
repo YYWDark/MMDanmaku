@@ -9,6 +9,15 @@
 #import "MMDanMakuModel.h"
 
 @implementation MMDanMakuModel
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.dataType = MMDanMakuDataTypeNormal;
+        self.appearanceType = MMDanMakuAppearanceLeft;
+    }
+    return self;
+}
+
 + (instancetype)modelWithTitle:(NSString *)title
                      imageName:(NSString *)imageName
                       isMyself:(BOOL)isMyself

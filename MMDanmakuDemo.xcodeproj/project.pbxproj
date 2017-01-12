@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7541F41D1E277F5F00161346 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7541F41C1E277F5F00161346 /* 1.jpg */; };
 		75662D401E16ACB600B8EE0B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 75662D3F1E16ACB600B8EE0B /* main.m */; };
 		75662D431E16ACB600B8EE0B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 75662D421E16ACB600B8EE0B /* AppDelegate.m */; };
 		75662D461E16ACB600B8EE0B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75662D451E16ACB600B8EE0B /* ViewController.m */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7541F41C1E277F5F00161346 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		75662D3B1E16ACB600B8EE0B /* MMDanmakuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMDanmakuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75662D3F1E16ACB600B8EE0B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		75662D411E16ACB600B8EE0B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7541F4151E277D9200161346 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				7541F41C1E277F5F00161346 /* 1.jpg */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		75662D321E16ACB600B8EE0B = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 		75662D3D1E16ACB600B8EE0B /* MMDanmakuDemo */ = {
 			isa = PBXGroup;
 			children = (
+				7541F4151E277D9200161346 /* images */,
 				75CECD5A1E1742940089CCC8 /* MMHeader */,
 				75CECD531E1742840089CCC8 /* MMCategory */,
 				75662D771E16AD6C00B8EE0B /* MMBulletView.h */,
@@ -260,6 +271,7 @@
 				TargetAttributes = {
 					75662D3A1E16ACB600B8EE0B = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 65Y8F76Y6Z;
 						ProvisioningStyle = Automatic;
 					};
 					75662D531E16ACB600B8EE0B = {
@@ -299,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7541F41D1E277F5F00161346 /* 1.jpg in Resources */,
 				75662D4E1E16ACB600B8EE0B /* LaunchScreen.storyboard in Resources */,
 				75662D4B1E16ACB600B8EE0B /* Assets.xcassets in Resources */,
 				75662D491E16ACB600B8EE0B /* Main.storyboard in Resources */,
@@ -484,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 65Y8F76Y6Z;
 				INFOPLIST_FILE = MMDanmakuDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ddd.MMDanmakuDemo;
@@ -495,6 +509,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 65Y8F76Y6Z;
 				INFOPLIST_FILE = MMDanmakuDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ddd.MMDanmakuDemo;

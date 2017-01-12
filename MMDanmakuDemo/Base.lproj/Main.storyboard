@@ -24,9 +24,20 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Udk-oA-fqg">
                                 <rect key="frame" x="41" y="75" width="31" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.76541078365087922" green="0.9218021035194397" blue="0.87932496348398026" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="开始"/>
                                 <connections>
                                     <action selector="start:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eWe-Qu-1wK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ylD-TD-Pr6">
+                                <rect key="frame" x="41" y="122" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.76541078370000004" green="0.92180210350000003" blue="0.8793249635" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="结束"/>
+                                <connections>
+                                    <action selector="start:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cz0-EO-v3t"/>
+                                    <action selector="stop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wnw-3h-f86"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -35,6 +46,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
         </scene>
     </scenes>
 </document>

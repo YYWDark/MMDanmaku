@@ -13,9 +13,11 @@ typedef NS_ENUM(NSUInteger, MMBulletViewStatus) {
     MMBulletViewStatusEnter = 1,  //完全进入到屏幕
     MMBulletViewStatusEnd   = 2   //完全离开屏幕
 };
-typedef void(^MovementStatus)(MMBulletViewStatus status,NSUInteger indexOfTracks);
+
+
 
 @interface MMBulletView : UIView
+typedef void(^MovementStatus)(MMBulletViewStatus status,NSUInteger indexOfTracks,MMBulletView *view);
 @property (nonatomic, strong) MMDanMakuModel *model;
 @property (nonatomic, assign) MMBulletViewStatus status;
 @property (nonatomic, copy) MovementStatus movementStatus;

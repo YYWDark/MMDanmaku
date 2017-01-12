@@ -19,12 +19,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MMDanmakuDemo/MMBulletView.m"
-            timestampString = "505820355.589916"
+            filePath = "MMDanmakuDemo/MMButton.m"
+            timestampString = "505881152.311647"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "7">
          </BreakpointContent>

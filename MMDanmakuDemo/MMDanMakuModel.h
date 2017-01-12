@@ -13,8 +13,8 @@ typedef NS_ENUM(NSUInteger, MMDanMakuDataType) {
 };
 
 typedef NS_ENUM(NSUInteger, MMDanMakuAppearanceType) {
-    MMDanMakuAppearanceLeft  = 0,           //左边
-    MMDanMakuAppearanceHorizonCenter  = 1,  //中间
+    MMDanMakuAppearanceLeft  = 0,           //左边开始
+    MMDanMakuAppearanceHorizonCenter  = 1,  //直接显示在中间
 };
 
 @interface MMDanMakuModel : NSObject

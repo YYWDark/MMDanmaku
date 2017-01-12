@@ -14,4 +14,8 @@
 #define scale [UIScreen mainScreen].scale
 #define kScreenHeigth [UIScreen mainScreen].bounds.size.height
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
+
+//color
+#define memberColorHex @"C3EBE0"
+#define normalColorHex @"FFFFFF"
 #endif /* MMHeader_h */
