@@ -17,17 +17,13 @@ typedef NS_ENUM(NSUInteger, MMDanMakuRestartType) {
 
 @interface MMConfiguration : NSObject
 @property (nonatomic, assign) MMDanMakuRestartType restartType;
-@property (nonatomic, assign) BOOL isNeedReuse;                   //是否需要重用机制 
+@property (nonatomic, assign) BOOL isNeedReuse;                   //是否需要重用机制
 @property (nonatomic, assign) NSTimeInterval duration;            //弹幕视图从开始到结束的动画时间
 @property (nonatomic, assign) NSTimeInterval durationOfProduction;//弹幕视图生产的间隔
-@property (nonatomic, assign) CGFloat topMargin;                  //跑道上的边距
+@property (nonatomic, assign) CGFloat topMargin;                  //跑道到视图上的边距
 @property (nonatomic, assign) CGFloat bottomMargin;
-@property (nonatomic, assign) CGFloat leftMargin;
-@property (nonatomic, assign) CGFloat rightMargin;
 @property (nonatomic, assign) CGFloat eachBulletViewHeight;       //每个视图的高度
 @property (nonatomic, assign) CGFloat titleSize;
-@property (nonatomic, assign) CGFloat horizontalMargin;           //left medium right
-@property (nonatomic, assign) CGFloat imageSide;                  //图片的边长
 @property (nonatomic, assign) NSUInteger numberOfTrack;           //弹道数
 @property (nonatomic, strong) UIView *targetView;
 

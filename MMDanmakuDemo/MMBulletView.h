@@ -14,8 +14,6 @@ typedef NS_ENUM(NSUInteger, MMBulletViewStatus) {
     MMBulletViewStatusEnd   = 2   //完全离开屏幕
 };
 
-
-
 @interface MMBulletView : UIView
 typedef void(^MovementStatus)(MMBulletViewStatus status,NSUInteger indexOfTracks,MMBulletView *view);
 @property (nonatomic, strong) MMDanMakuModel *model;
@@ -23,8 +21,7 @@ typedef void(^MovementStatus)(MMBulletViewStatus status,NSUInteger indexOfTracks
 @property (nonatomic, copy) MovementStatus movementStatus;
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 @property (nonatomic, assign) NSUInteger indexOfTracks;
+@property (nonatomic, assign) CGFloat titleSize;
 
 - (void)srartWithAnimationDuration:(NSTimeInterval)duration animationScreenWidth:(CGFloat)Width;
-
-- (void)stopAnimation;
 @end

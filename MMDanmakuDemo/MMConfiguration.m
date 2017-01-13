@@ -20,13 +20,9 @@
         self.normalColorHex = @"SD3214";
         self.topMargin = 0.0f;
         self.bottomMargin = 0.0f;
-        self.bottomMargin = 0.0;
-        self.bottomMargin = 0.0f;
         self.duration = 2.5f;
         self.eachBulletViewHeight = 20.0f;
         self.titleSize = 14.0f;
-        self.horizontalMargin = 10.0f;
-        self.imageSide = self.eachBulletViewHeight;
         self.isNeedReuse = YES;
         self.durationOfProduction = .3f;
     }

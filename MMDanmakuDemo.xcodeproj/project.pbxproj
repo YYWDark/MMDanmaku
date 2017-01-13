@@ -133,15 +133,10 @@
 		75662D3D1E16ACB600B8EE0B /* MMDanmakuDemo */ = {
 			isa = PBXGroup;
 			children = (
+				75F5BBE71E28C1E7001388EB /* MMDanmakuGroup */,
 				7541F4151E277D9200161346 /* images */,
 				75CECD5A1E1742940089CCC8 /* MMHeader */,
 				75CECD531E1742840089CCC8 /* MMCategory */,
-				75662D771E16AD6C00B8EE0B /* MMBulletView.h */,
-				75662D781E16AD6C00B8EE0B /* MMBulletView.m */,
-				75662D741E16AD2F00B8EE0B /* MMConfiguration.h */,
-				75662D751E16AD2F00B8EE0B /* MMConfiguration.m */,
-				75662D711E16AD0600B8EE0B /* MMDanmakuManger.h */,
-				75662D721E16AD0600B8EE0B /* MMDanmakuManger.m */,
 				75662D411E16ACB600B8EE0B /* AppDelegate.h */,
 				75662D421E16ACB600B8EE0B /* AppDelegate.m */,
 				75662D441E16ACB600B8EE0B /* ViewController.h */,
@@ -151,8 +146,6 @@
 				75662D4C1E16ACB600B8EE0B /* LaunchScreen.storyboard */,
 				75662D4F1E16ACB600B8EE0B /* Info.plist */,
 				75662D3E1E16ACB600B8EE0B /* Supporting Files */,
-				75662D7A1E16ADB600B8EE0B /* MMDanMakuModel.h */,
-				75662D7B1E16ADB600B8EE0B /* MMDanMakuModel.m */,
 			);
 			path = MMDanmakuDemo;
 			sourceTree = "<group>";
@@ -202,6 +195,21 @@
 				75CECD5B1E1742940089CCC8 /* MMDanmakuHeader.h */,
 			);
 			path = MMHeader;
+			sourceTree = "<group>";
+		};
+		75F5BBE71E28C1E7001388EB /* MMDanmakuGroup */ = {
+			isa = PBXGroup;
+			children = (
+				75662D771E16AD6C00B8EE0B /* MMBulletView.h */,
+				75662D781E16AD6C00B8EE0B /* MMBulletView.m */,
+				75662D741E16AD2F00B8EE0B /* MMConfiguration.h */,
+				75662D751E16AD2F00B8EE0B /* MMConfiguration.m */,
+				75662D711E16AD0600B8EE0B /* MMDanmakuManger.h */,
+				75662D721E16AD0600B8EE0B /* MMDanmakuManger.m */,
+				75662D7A1E16ADB600B8EE0B /* MMDanMakuModel.h */,
+				75662D7B1E16ADB600B8EE0B /* MMDanMakuModel.m */,
+			);
+			name = MMDanmakuGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

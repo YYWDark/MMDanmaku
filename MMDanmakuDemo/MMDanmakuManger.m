@@ -13,12 +13,13 @@
 
 @interface MMDanmakuManger ()
 @property (nonatomic, strong) NSMutableArray *widthArr;
-@property (nonatomic, strong) NSMutableArray *sourceArr;
+@property (nonatomic, strong) NSMutableArray *sourceArr;     //数据
 @property (nonatomic, strong) NSMutableArray *cacheArr;      //缓存复用
 @property (nonatomic, strong) NSMutableArray *trackArray;    //记录弹道
 @property (nonatomic, strong) NSMutableDictionary *displayingDic; //
 @property (nonatomic, assign) BOOL isBeingExecuted;
 @property (nonatomic, assign) NSUInteger index;              //出现弹幕的序列号
+@property (nonatomic, assign) NSUInteger count;              //记录
 @end
 
 @implementation MMDanmakuManger
@@ -30,19 +31,7 @@
         self.cacheArr = [NSMutableArray array];
         self.trackArray = [NSMutableArray array];
         self.displayingDic = [NSMutableDictionary dictionary];
-        
-        __weak typeof(self) weakself = self;
-        self.tapBlock = ^(CGPoint point) {
-            NSUInteger index =  point.y/weakself.configuration.eachBulletViewHeight;
-            NSString *key = [NSString stringWithFormat:@"%lu",index];
-            NSMutableArray *arr = weakself.displayingDic[key];
-                for (MMBulletView *view in arr) {
-                    CGRect rect = view.layer.presentationLayer.frame;
-                    if (rect.origin.x <= point.x && (rect.origin.x + rect.size.width) >= point.x ) {
-                       NSLog(@"点击了第%ld个视图",view.tag);
-                    }
-                }
-        };
+        [self _callBackTapAction];
     }
     return self;
 }
@@ -60,43 +49,45 @@
 
 #pragma mark - Public Method
 - (void)packageData {
-    if ([self.dataSource respondsToSelector:@selector(numberOfItemsControlleredByDanmakuManger:)] && [self.dataSource respondsToSelector:@selector(danmakuManger:informationForItem:)]) {
-        for (int i = 0; i < [self.dataSource numberOfItemsControlleredByDanmakuManger:self]; i++) {
-            MMDanMakuModel *model = [self.dataSource danmakuManger:self informationForItem:i];
-            CGFloat eachWidth = [NSObject widthFromString:model.title withFont:[UIFont systemFontOfSize:self.configuration.titleSize] constraintToHeight:self.configuration.eachBulletViewHeight];
-            [self.sourceArr addObject:model];
-            [self.widthArr addObject:@(eachWidth)];
-        }
+    [self _getData];
+}
+
+- (void)appendData {
+    [self _getData];
+    if (self.isBeingExecuted == NO &&self.isStarted == YES) {
+        [self start];
     }
-    
 }
 
 - (void)start {
-    if (self.isStarted) return;
-    [self _updateStatusStart:YES isPaused:NO isFinished:NO];
+    [self _updateStatusStart:YES isFinished:NO];
     [self go];
 }
 
-- (void)pause {
-    NSLog(@"暂停");
-    
-}
+
 
 - (void)stop {
-    NSLog(@"结束");
+    
+    if (self.configuration.restartType == MMDanMakuRestartTypeFromTheBeginning) {
+        self.index = 0;
+    }else {
+        NSRange range = {0, self.index};
+        [self.widthArr removeObjectsInRange:range];
+        [self.sourceArr removeObjectsInRange:range];
+        self.index = 0;
+    }
+    
+    [self _updateStatusStart:NO isFinished:YES];
     for (UIView *view in self.configuration.targetView.subviews) {
         if ([view isMemberOfClass:[MMBulletView class]]) {
           [view removeFromSuperview];  
         }
     }
-    [self _updateStatusStart:NO isPaused:NO isFinished:YES];
-    
 }
 
 #pragma mark - Private Method
-- (void)_updateStatusStart:(BOOL)isStarted isPaused:(BOOL)isPaused isFinished:(BOOL)isFinished {
+- (void)_updateStatusStart:(BOOL)isStarted isFinished:(BOOL)isFinished {
     self.isFinished = isFinished;
-    self.isPaused = isPaused;
     self.isStarted = isStarted;
 }
 
@@ -114,16 +105,17 @@
     return indexOfTracks;
 }
 
-
 - (void)go {
-    
     NSUInteger indexOfTrack;
-    
-    if (((indexOfTrack = [self _getIndexOfTracks]) == -1 || self.index >= self.sourceArr.count)||self.isPaused == YES || self.isFinished == YES) {
-        self.isBeingExecuted = NO;
+    if (((indexOfTrack = [self _getIndexOfTracks]) == -1 || self.index >= self.sourceArr.count) || self.isFinished == YES) {
+      
+
+        if(self.index >= self.sourceArr.count) {
+           self.isBeingExecuted = NO;
+        }
         return;
     }
-    self.isBeingExecuted = YES;
+        self.isBeingExecuted = YES;
         //从弹道数组里面移除该该弹道，待该视图完全进入到显示屏幕再加回来该弹道
         [self.trackArray removeObject:@(indexOfTrack)];
         //生成弹幕视图
@@ -135,7 +127,6 @@
     if (bulletView == nil) {
         bulletView = [[MMBulletView alloc] init];
     }
-   
         bulletView.frame = CGRectMake(self.configuration.targetView.width, indexOfTrack*self.configuration.eachBulletViewHeight, [self.widthArr[self.index] floatValue], self.configuration.eachBulletViewHeight);
         MMDanMakuModel *model = self.sourceArr[self.index];
     
@@ -146,6 +137,7 @@
         bulletView.indexOfTracks = indexOfTrack;
         bulletView.model = model;
         bulletView.tag = self.index;
+        bulletView.titleSize = self.configuration.titleSize;
         [self.configuration.targetView addSubview:bulletView];
         bulletView.movementStatus = ^(MMBulletViewStatus status,NSUInteger indexOfTracks,MMBulletView *view) {
             switch (status) {
@@ -175,8 +167,9 @@
                     //将消息的视图添加到缓存数组中，这样直接先从缓存来拿，拿不到再创建
                     [self.cacheArr addObject:view];
                     if (self.isBeingExecuted == NO) { //如果因为轨道满了停止了则继续递归
-                        [self go];
+                      [self go];
                     }
+                    
                     break; }
                 default:
                     break;
@@ -189,10 +182,36 @@
     });
 }
 
+- (void)_callBackTapAction {
+    __weak __typeof(self)weakSelf = self;
+    self.tapBlock = ^(CGPoint point) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        NSUInteger index =  point.y/strongSelf.configuration.eachBulletViewHeight;
+        NSString *key = [NSString stringWithFormat:@"%lu",index];
+        NSMutableArray *arr = strongSelf.displayingDic[key];
+        for (MMBulletView *view in arr) {
+            CGRect rect = view.layer.presentationLayer.frame;
+            if (rect.origin.x <= point.x && (rect.origin.x + rect.size.width) >= point.x ) {
+                if ([strongSelf.delegate respondsToSelector:@selector(danmakuManger:didSelectedItem:)]) {
+                    [strongSelf.delegate danmakuManger:strongSelf didSelectedItem:strongSelf.sourceArr[view.tag]];
+                }
+            }
+        }
+    };
+}
 
-
-
-
+- (void)_getData {
+    if ([self.dataSource respondsToSelector:@selector(numberOfItemsControlleredByDanmakuManger:)] && [self.dataSource respondsToSelector:@selector(danmakuManger:informationForItem:)]) {
+        NSUInteger number = [self.dataSource numberOfItemsControlleredByDanmakuManger:self];
+        while ((number - self.count)>0) {
+            MMDanMakuModel *model = [self.dataSource danmakuManger:self informationForItem:self.count];
+            CGFloat eachWidth = [NSObject widthFromString:model.title withFont:[UIFont systemFontOfSize:self.configuration.titleSize] constraintToHeight:self.configuration.eachBulletViewHeight];
+            [self.sourceArr addObject:model];
+            [self.widthArr addObject:@(eachWidth)];
+            self.count ++;
+        }
+    }
+}
 
 
 @end
