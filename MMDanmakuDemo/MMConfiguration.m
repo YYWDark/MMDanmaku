@@ -36,8 +36,24 @@
     configuration.duration = duration;
     configuration.targetView = targetView;
     configuration.restartType = type;
-    configuration.numberOfTrack = (CGRectGetHeight(configuration.targetView.frame) - configuration.topMargin - configuration.bottomMargin)/configuration.eachBulletViewHeight;
+    configuration.numberOfTrack = [configuration _calculateNumberOfTrack];
     return configuration;
+}
+
++ (instancetype)configurationAimationDuration:(NSTimeInterval)duration
+                                   targetView:(UIView *)targetView
+                                  restartType:(MMDanMakuRestartType)type
+                                    topMargin:(CGFloat)topMargin
+                                 bottomMargin:(CGFloat)bottomMargin {
+    MMConfiguration *configuration = [MMConfiguration configurationAimationDuration:duration targetView:targetView restartType:type];
+    configuration.topMargin = topMargin;
+    configuration.bottomMargin = bottomMargin;
+    configuration.numberOfTrack = [configuration _calculateNumberOfTrack];
+    return configuration;
+}
+
+- (NSUInteger)_calculateNumberOfTrack {
+    return (CGRectGetHeight(self.targetView.frame) - self.topMargin - self.bottomMargin)/self.eachBulletViewHeight;
 }
 
 

@@ -26,13 +26,13 @@
    
     self.dataArr = [NSMutableArray array];
     self.mark = 0;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 40; i++) {
         MMDanMakuModel *model = [MMDanMakuModel modelWithTitle:[NSString stringWithFormat:@"%@--%ld",self.array[random()%self.array.count],self.mark] imageName:@"" isMyself:i%2 dataType:(i%5)?MMDanMakuDataTypeNormal:MMPopupViewDisplayTypeMember appearanceType:(i%18)?MMDanMakuAppearanceLeft:MMDanMakuAppearanceHorizonCenter];
         [self.dataArr addObject:model];
         self.mark++;
     }
     
-    MMConfiguration *configuration = [MMConfiguration configurationAimationDuration:8 targetView:self.view restartType:MMDanMakuRestartTypeFromLastState];
+    MMConfiguration *configuration = [MMConfiguration configurationAimationDuration:10 targetView:self.view restartType:MMDanMakuRestartTypeFromLastState topMargin:20 bottomMargin:80];
     self.manger = [[MMDanmakuManger alloc] initWithConfiguration:configuration];
     self.manger.dataSource = self;
     self.manger.delegate = self;

@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *sourceArr;     //数据
 @property (nonatomic, strong) NSMutableArray *cacheArr;      //缓存复用
 @property (nonatomic, strong) NSMutableArray *trackArray;    //记录弹道
-@property (nonatomic, strong) NSMutableDictionary *displayingDic; //
+@property (nonatomic, strong) NSMutableDictionary *displayingDic; 
 @property (nonatomic, assign) BOOL isBeingExecuted;
 @property (nonatomic, assign) NSUInteger index;              //出现弹幕的序列号
 @property (nonatomic, assign) NSUInteger count;              //记录
@@ -127,7 +127,7 @@
     if (bulletView == nil) {
         bulletView = [[MMBulletView alloc] init];
     }
-        bulletView.frame = CGRectMake(self.configuration.targetView.width, indexOfTrack*self.configuration.eachBulletViewHeight, [self.widthArr[self.index] floatValue], self.configuration.eachBulletViewHeight);
+        bulletView.frame = CGRectMake(self.configuration.targetView.width, self.configuration.topMargin + indexOfTrack*self.configuration.eachBulletViewHeight, [self.widthArr[self.index] floatValue], self.configuration.eachBulletViewHeight);
         MMDanMakuModel *model = self.sourceArr[self.index];
     
     if (model.appearanceType == MMDanMakuAppearanceHorizonCenter) {
@@ -186,7 +186,7 @@
     __weak __typeof(self)weakSelf = self;
     self.tapBlock = ^(CGPoint point) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        NSUInteger index =  point.y/strongSelf.configuration.eachBulletViewHeight;
+        NSUInteger index =  (point.y - self.configuration.topMargin)/strongSelf.configuration.eachBulletViewHeight;
         NSString *key = [NSString stringWithFormat:@"%lu",index];
         NSMutableArray *arr = strongSelf.displayingDic[key];
         for (MMBulletView *view in arr) {

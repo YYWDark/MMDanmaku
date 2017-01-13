@@ -16,6 +16,9 @@ typedef NS_ENUM(NSUInteger, MMDanMakuRestartType) {
 
 
 @interface MMConfiguration : NSObject
+{
+    NSString *t;
+}
 @property (nonatomic, assign) MMDanMakuRestartType restartType;
 @property (nonatomic, assign) BOOL isNeedReuse;                   //是否需要重用机制
 @property (nonatomic, assign) NSTimeInterval duration;            //弹幕视图从开始到结束的动画时间
@@ -33,4 +36,10 @@ typedef NS_ENUM(NSUInteger, MMDanMakuRestartType) {
 + (instancetype)configurationAimationDuration:(NSTimeInterval)duration
                                    targetView:(UIView *)targetView
                                   restartType:(MMDanMakuRestartType)type;
+
++ (instancetype)configurationAimationDuration:(NSTimeInterval)duration
+                                   targetView:(UIView *)targetView
+                                  restartType:(MMDanMakuRestartType)type
+                                    topMargin:(CGFloat)topMargin
+                                 bottomMargin:(CGFloat)bottomMargin;
 @end
