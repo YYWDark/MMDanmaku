@@ -65,6 +65,5 @@ Demo中利用定时器来模仿用户输入追加数据：
 ###控件效果
 
 手上只有iPhone6 Plus，利用YYkit的检测工具，在大量数据的情况下可以保持60FPS。
-
-![13.gif](http://upload-images.jianshu.io/upload_images/307963-0bd80e4175d9f925.gif?imageMogr2/auto-orient/strip)
+![效果图.gif](http://upload-images.jianshu.io/upload_images/307963-279c0632b9a1f388.gif?imageMogr2/auto-orient/strip)
 如果你喜欢欢迎like和star
