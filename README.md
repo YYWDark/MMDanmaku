@@ -1,4 +1,4 @@
-# MMDanmakuDemo
+# MMDanmaku
 ##前言
 其实在github上已经有了很优秀的弹幕开源控件[HJDanmaku](https://github.com/panghaijiao/HJDanmakuDemo),那为什么要重复造轮子呢?主要考虑到以下方面：
 1.重用机制。
