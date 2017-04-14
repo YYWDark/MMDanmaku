@@ -64,6 +64,6 @@ Demo中利用定时器来模仿用户输入追加数据：
 
 ### 控件效果
 
-![13.gif](http://upload-images.jianshu.io/upload_images/307963-0bd80e4175d9f925.gif?imageMogr2/auto-orient/strip)
+![13.gif](http://upload-images.jianshu.io/upload_images/307963-279c0632b9a1f388.gif?imageMogr2/auto-orient/strip)
 
-如果你喜欢欢迎like和star
+
