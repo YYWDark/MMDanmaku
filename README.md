@@ -17,7 +17,7 @@ self.manger.tapBlock(point);
 }
 }
 ```
-2.我们在弹幕控件中我们会根据显示的区域(可以根据配置类topMargin,bottomMargin调整显示区域)，和每个弹幕的高度`eachBulletViewHeight`，把显示的区域划分为一条条弹道。管理类会持有`displayingDic`，来记录每个显示区域每个弹道上的视图。这个时候你需要知道对于视图的presentationLayer 和 layer之间的关系。简单来说就是做UIView frame改变动画，你发现layer只有开始值和结束值，而presentationLayer会持续显示过程值。你可以点击[这里](http://www.jianshu.com/p/1efb0238c1dd)来进一步了解之间额关系。然后根据弹道的key来取`displayingDic`的视图数组,判断该点是否在该视图的presentationLayer frame里面。
+2.我们在弹幕控件中我们会根据显示的区域(可以根据配置类topMargin,bottomMargin调整显示区域)，和每个弹幕的高度`eachBulletViewHeight`，把显示的区域划分为一条条弹道。管理类会持有`displayingDic`，来记录每个显示区域每个弹道上的视图。这个时候你需要知道对于视图的presentationLayer 和 layer之间的关系。简单来说就是做`UIView frame`改变动画，你发现`layer`只有开始值和结束值，而`presentationLayer`会持续显示过程值。你可以点击[这里](http://www.jianshu.com/p/1efb0238c1dd)来进一步了解之间额关系。然后根据弹道的key来取`displayingDic`的视图数组,判断该点是否在该视图的presentationLayer frame里面。
 
 
 ### 控件
